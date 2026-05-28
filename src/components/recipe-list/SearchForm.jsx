@@ -1,6 +1,6 @@
 export default function SearchForm({ recipe, onRecipeChange, onSearch }){
     return (
-        <form onSubmit={onSearch} className="row g-2 row-cols-lg-auto align-items-center">
+        <form onSubmit={onSearch} className="row g-2 row-cols-lg-auto align-items-center p-4 mt-2">
             <div className="col-9">
                 <input name="recipe" value={recipe} onChange={onRecipeChange} className="form-control" placeholder="Search for a recipe"></input>
             </div>

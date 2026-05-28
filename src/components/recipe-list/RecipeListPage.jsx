@@ -1,4 +1,5 @@
 import SearchForm from "./SearchForm"
+import RecipeList from "./RecipeList"
 
 export default function RecipeListPage(){
     return (
@@ -6,6 +7,7 @@ export default function RecipeListPage(){
             <div className="row">
                 <div className="col-9">
                     <SearchForm />
+                    <RecipeList />
                 </div>
                 <div className="col-3">
                     Favorites
