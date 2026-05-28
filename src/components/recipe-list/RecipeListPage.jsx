@@ -1,9 +1,11 @@
+import SearchForm from "./SearchForm"
+
 export default function RecipeListPage(){
     return (
         <div className="container">
             <div className="row">
                 <div className="col-9">
-                    Form and List
+                    <SearchForm />
                 </div>
                 <div className="col-3">
                     Favorites
