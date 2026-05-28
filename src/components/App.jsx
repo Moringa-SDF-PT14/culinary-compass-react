@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import RecipeListPage from './recipe-list/RecipeListPage'
 
 function App() {
   return (
     <>
-      <h1>Welcome to Culinary Compass</h1>
+      <RecipeListPage />
     </>
   )
 }
