@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router";
+
 export default function RecipeItem({recipe}){
     return (
         <div className="card col-3" style={{width: '18rem'}}>
@@ -7,10 +9,10 @@ export default function RecipeItem({recipe}){
                 <p className="card-text">{recipe.country}</p>
                 <div className="row">
                     <div className="col">
-                        <a href="#" className="btn btn-primary">Open Details</a>
+                        <Link to={`/details/${recipe.id}`} className="btn btn-primary">Open Details</Link>
                     </div>
                     <div className="col">
-                        <a href="#" className="btn btn-outline-warning">Favorite</a>
+                        <NavLink to={'#'} className="btn btn-outline-warning">Favorite</NavLink>
                     </div>
                 </div>
             </div>

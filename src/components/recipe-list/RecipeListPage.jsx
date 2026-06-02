@@ -3,6 +3,7 @@ import RecipeList from "./RecipeList"
 import FavoritesList from "../favorites/FavoritesList"
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../../data/config"
+import { useNavigate } from "react-router"
 
 const TEST_DATA = [ 
     { id: 101, name: "Chicken" },
@@ -11,8 +12,11 @@ const TEST_DATA = [
 
 export default function RecipeListPage(){
 
-    const recipeURL = `${BASE_URL}search.php?f=a`
+    const [recipeURL, setRecipeURL] = useState(`${BASE_URL}search.php?f=a`)
     const [recipes, setRecipes] = useState([])
+    const [currentRecipe, setCurrentRecipe] = useState("")
+
+    const navigate = useNavigate()
 
     const handleRecipes = (mealData) => {
         const modelledRecipes = mealData.meals.map((meal) => {
@@ -24,6 +28,23 @@ export default function RecipeListPage(){
             }
         })
         setRecipes(() => modelledRecipes)
+
+        // If only one item is present on the list, just open details
+        if(modelledRecipes.length === 1){
+            const id = modelledRecipes[0].id
+            navigate(`/details/${id}`)
+        }
+
+    }
+
+    const handleRecipeChange = (event) => {
+        const value = event.target.value
+        setCurrentRecipe(value)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        setRecipeURL(`${BASE_URL}search.php?s=${currentRecipe}`)
     }
 
     useEffect(() => {
@@ -36,10 +57,11 @@ export default function RecipeListPage(){
         <div className="container">
             <div className="row">
                 <div className="col-9">
-                    <SearchForm />
+                    <SearchForm recipe={currentRecipe} onRecipeChange={handleRecipeChange} onSearch={handleSubmit} />
                     <RecipeList recipes={recipes} />
                 </div>
                 <div className="col-3">
+                    {/* TODO: Finalize favorites using localStorage */}
                     <FavoritesList favList={TEST_DATA} />
                 </div>
             </div>
