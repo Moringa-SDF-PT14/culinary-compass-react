@@ -1,7 +1,14 @@
 import SearchForm from "./SearchForm"
 import RecipeList from "./RecipeList"
+import FavoritesList from "../favorites/FavoritesList"
+
+const TEST_DATA = [ 
+    { id: 101, name: "Chicken" },
+    { id: 102, name: "Croissant" }
+]
 
 export default function RecipeListPage(){
+
     return (
         <div className="container">
             <div className="row">
@@ -10,9 +17,9 @@ export default function RecipeListPage(){
                     <RecipeList />
                 </div>
                 <div className="col-3">
-                    Favorites
+                    <FavoritesList favList={TEST_DATA} />
                 </div>
             </div>
         </div>
-    )    
+    )
 }
